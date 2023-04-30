@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Title>NGPT - OpenAI ChatGPT library for C#</Title>
+    <Authors>dkacban</Authors>
+    <Description>Add ChatGPT language model to your applications in seconds! Send request to ChatGPT easily. Just type in your OpenAI apiKey and Organization ID, and you're ready to code.</Description>
+    <Copyright>Copyright (c) PILSOFT 2023.</Copyright>
+    <PackageProjectUrl>pilsoft.pl</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageTags>openai, chatGPT, GPT, GPT Completion, GPT API</PackageTags>
+    <PackageReleaseNotes>- Improve multiple messages generation</PackageReleaseNotes>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <AssemblyVersion>1.1.0</AssemblyVersion>
+    <FileVersion>1.1.0</FileVersion>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Version>1.4.3</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\..\OneDrive\Pulpit\GPT Development\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\Audio\Transcription\" />
+    <Folder Include="Services\Audio\Translation\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Flurl.Http" Version="3.2.4" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Polly.Extensions.Http" Version="3.0.0" />
+  </ItemGroup>
+
+</Project>

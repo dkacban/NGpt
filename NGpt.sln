@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NGpt", "NGpt\NGpt.csproj", "{961D582C-E1A6-4031-A172-75A921490152}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NGpt.Test", "NGpt.Test\NGpt.Test.csproj", "{9779B64D-C140-4A4A-9CCC-39A9D025010A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{961D582C-E1A6-4031-A172-75A921490152}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{961D582C-E1A6-4031-A172-75A921490152}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{961D582C-E1A6-4031-A172-75A921490152}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{961D582C-E1A6-4031-A172-75A921490152}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9779B64D-C140-4A4A-9CCC-39A9D025010A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9779B64D-C140-4A4A-9CCC-39A9D025010A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9779B64D-C140-4A4A-9CCC-39A9D025010A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9779B64D-C140-4A4A-9CCC-39A9D025010A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6FE4CD5C-8E27-453A-B4A8-5CD3D9B52418}
+	EndGlobalSection
+EndGlobal
