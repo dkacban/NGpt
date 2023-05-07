@@ -1,4 +1,7 @@
 using NGpt.ChatCompletion;
+using System.ComponentModel;
+using System.Reflection;
+using Xunit.Sdk;
 
 namespace NGpt.Test;
 
@@ -8,7 +11,7 @@ public class ChatCompletionTests
 
     public ChatCompletionTests()
     {
-        _chat = new Chat("", "org-UpMJfYAwK3diGzF1OVSVLb1e");
+        _chat = new Chat("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", "org-UpMJfYAwK3diGzF1OVSVLb1e");
     }
 
     [Fact]
@@ -111,5 +114,13 @@ public class ChatCompletionTests
             var content = choice.Message.Content;
             Assert.True(content.Length > 0);
         }
+    }
+
+    [Fact]
+    public void ShouldCompleteForSimpleText()
+    {
+        var response = _chat.Complete("Say hello");
+
+        Assert.True(response.Contains("Hello"));
     }
 }

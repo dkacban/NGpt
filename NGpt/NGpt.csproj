@@ -11,12 +11,12 @@
     <PackageProjectUrl>pilsoft.pl</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageTags>openai, chatGPT, GPT, GPT Completion, GPT API</PackageTags>
-    <PackageReleaseNotes>- Improve multiple messages generation</PackageReleaseNotes>
+    <PackageReleaseNotes>- Update README simple example</PackageReleaseNotes>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <AssemblyVersion>1.1.0</AssemblyVersion>
-    <FileVersion>1.1.0</FileVersion>
+    <AssemblyVersion>1.4.5</AssemblyVersion>
+    <FileVersion>1.4.5</FileVersion>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>1.4.3</Version>
+    <Version>1.4.5</Version>
   </PropertyGroup>
 
   <ItemGroup>
