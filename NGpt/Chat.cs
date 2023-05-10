@@ -1,6 +1,5 @@
 ﻿using NGpt.ChatCompletion;
 using NGpt.Services.Chat;
-using System;
 
 namespace NGpt
 {

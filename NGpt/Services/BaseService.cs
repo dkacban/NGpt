@@ -1,4 +1,5 @@
 ﻿using Flurl.Http;
+using Newtonsoft.Json;
 using Polly;
 using System.ComponentModel;
 
@@ -16,15 +17,7 @@ namespace NGpt.Services
             _organization = organization;
         }
 
-        protected string GetModelName(Enum model)
-        {
-            var field = model.GetType().GetField(model.ToString());
-            var descriptionAttribute = (DescriptionAttribute)Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute));
-
-            return descriptionAttribute?.Description ?? model.ToString().ToLowerInvariant();
-        }
-
-        protected string CallApi(object requestDto)
+        protected T CallApi<T>(object requestDto)
         {
             //var response = Url
             //    .WithHeader("Content-Type", "application/json")
@@ -57,7 +50,17 @@ namespace NGpt.Services
 
             string responseBody = response.ResponseMessage.Content.ReadAsStringAsync().Result;
 
-            return responseBody;
+            var responseDto = JsonConvert.DeserializeObject<T>(responseBody);
+
+            return responseDto;
+        }
+
+        protected string EnumToString<T>(T enumValue) where T : Enum
+        {
+            var field = enumValue.GetType().GetField(enumValue.ToString());
+            var descriptionAttribute = (DescriptionAttribute)Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute));
+
+            return descriptionAttribute?.Description ?? enumValue.ToString().ToLowerInvariant();
         }
     }
 }

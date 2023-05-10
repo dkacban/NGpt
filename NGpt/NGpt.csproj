@@ -11,12 +11,13 @@
     <PackageProjectUrl>pilsoft.pl</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageTags>openai, chatGPT, GPT, GPT Completion, GPT API</PackageTags>
-    <PackageReleaseNotes>- Add Edit functionality to modify text or code. </PackageReleaseNotes>
+    <PackageReleaseNotes>- Add image generation with DALL-E 2 model
+- Update readme file with DALL-E 2 example </PackageReleaseNotes>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <AssemblyVersion>1.5.0</AssemblyVersion>
-    <FileVersion>1.5.0</FileVersion>
+    <AssemblyVersion>1.6.0</AssemblyVersion>
+    <FileVersion>1.6.0</FileVersion>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>1.5.0</Version>
+    <Version>1.6.0</Version>
   </PropertyGroup>
 
   <ItemGroup>

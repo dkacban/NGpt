@@ -16,7 +16,7 @@ namespace NGpt.Services.Edit
         {
             var requestDto = new EditRequestDto()
             {
-                Model = GetModelName(request.Model),
+                Model = EnumToString(request.Model),
                 Input = request.Input,
                 Instruction = request.Instruction,
                 N = request.N,
@@ -24,8 +24,7 @@ namespace NGpt.Services.Edit
                 TopP = request.TopP
             };
 
-            string responseBody = CallApi(requestDto);
-            var responseDto = JsonConvert.DeserializeObject<EditResponseDto>(responseBody);
+            var responseDto = CallApi<EditResponseDto>(requestDto);
 
             var response = new EditResponse(
                 Created : responseDto.Created,
