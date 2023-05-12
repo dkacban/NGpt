@@ -12,7 +12,7 @@ namespace NGpt.Services.Chat
         {
         }
 
-        public ChatResponse Complete(ChatRequest request)
+        public async Task<ChatResponse> Complete(ChatRequest request)
         {
             var requestDto = new ChatRequestDto
             {
@@ -36,7 +36,7 @@ namespace NGpt.Services.Chat
                 FrequencyPenalty = request.FrequencyPenalty,
             };
 
-            var responseDto = CallApi<ChatResponseDto>(requestDto);
+            var responseDto = await CallApi<ChatResponseDto>(requestDto);
 
             var chatResponse = new ChatResponse
             {

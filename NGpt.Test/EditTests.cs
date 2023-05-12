@@ -12,23 +12,23 @@ public class EditTests
     }
 
     [Fact]
-    public void ShouldModifyText()
+    public async void ShouldModifyText()
     {
-        var response = _edit.EditText("To bee or not to be.", "fix spelling");
+        var response = await _edit.EditTextAsync("To bee or not to be.", "fix spelling");
 
         Assert.Equal("To be or not to be.\n", response);
     }
 
     [Fact]
-    public void ShouldModifyCode()
+    public async void ShouldModifyCode()
     {
-        var response = _edit.EditCode("Console.WriteLine(\"Test\");", "Change it to dispay text: \"aaa\"");
+        var response = await _edit.EditCodeAsync("Console.WriteLine(\"Test\");", "Change it to dispay text: \"aaa\"");
 
         Assert.Equal("Console.WriteLine(\"aaa\");\n", response);        
     }
 
     [Fact]
-    public void ShouldEditContent()
+    public async void ShouldEditContent()
     {
         var request = new EditRequest(EditModel.TextDavinciEdit001, "Change it to dispay text: \"aaa\"")
         {
@@ -38,7 +38,7 @@ public class EditTests
             TopP = 1
         };
 
-        var response = _edit.EditContent(request);
+        var response = await _edit.EditContentAsync(request);
 
         Assert.Equal("Console.WriteLine(\"aaa\");\n", response.Choices.First().Text);
     }

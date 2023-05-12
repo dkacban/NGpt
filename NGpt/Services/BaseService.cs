@@ -1,14 +1,15 @@
 ﻿using Flurl.Http;
 using Newtonsoft.Json;
 using Polly;
+using Polly.Retry;
 using System.ComponentModel;
 
 namespace NGpt.Services
 {
     internal abstract class BaseService
     {
-        private string _apiKey;
-        private readonly string _organization;
+        protected string _apiKey;
+        protected readonly string _organization;
         public virtual string Url { get; }
 
         protected BaseService(string apiKey, string organization)
@@ -17,42 +18,41 @@ namespace NGpt.Services
             _organization = organization;
         }
 
-        protected T CallApi<T>(object requestDto)
+        protected async Task<T?> CallApi<T>(object requestDto)
         {
-            //var response = Url
-            //    .WithHeader("Content-Type", "application/json")
-            //    .WithHeader("Authorization", $"Bearer {_apiKey}")
-            //    .WithHeader("organization", _organization)
-            //    .PostJsonAsync(requestDto).Result;
-
-            //return "";
-
-            var policy = Policy
-                .Handle<AggregateException>(aggregateException =>
-                    aggregateException.InnerExceptions.Any(innerException => innerException is FlurlHttpException))
-                .Or<FlurlHttpException>()
-                .WaitAndRetry(5, retryAttempt => TimeSpan.FromSeconds(Math.Pow(3, retryAttempt)));
+            AsyncRetryPolicy policy = CreateRetryPolicy();
 
             IFlurlResponse response = null;
-            policy.Execute(() =>
-            {
-                response = Url
+            await policy.ExecuteAsync(async () =>
+                {
+                    response = await Url
                     .WithHeader("Content-Type", "application/json")
                     .WithHeader("Authorization", $"Bearer {_apiKey}")
                     .WithHeader("organization", _organization)
-                    .PostJsonAsync(requestDto).Result;
-            });
+                    .PostJsonAsync(requestDto);
+                }
+            );
 
             if (response == null)
             {
                 throw new Exception("Failed to send request to OpenAI API.");
             }
 
-            string responseBody = response.ResponseMessage.Content.ReadAsStringAsync().Result;
+            string responseBody = await response.ResponseMessage.Content.ReadAsStringAsync();
 
             var responseDto = JsonConvert.DeserializeObject<T>(responseBody);
 
             return responseDto;
+        }
+
+        protected AsyncRetryPolicy CreateRetryPolicy()
+        {
+            return Policy
+                .Handle<FlurlHttpException>()
+                .Or<AggregateException>(aggregateException =>
+                    aggregateException.InnerExceptions.Any(innerException => innerException is FlurlHttpException))
+                .Or<FlurlHttpException>()
+                .WaitAndRetryAsync(6, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)));
         }
 
         protected string EnumToString<T>(T enumValue) where T : Enum

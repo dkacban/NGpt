@@ -10,14 +10,14 @@
     <Copyright>Copyright (c) PILSOFT 2023.</Copyright>
     <PackageProjectUrl>pilsoft.pl</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageTags>openai, chatGPT, GPT, GPT Completion, GPT API</PackageTags>
-    <PackageReleaseNotes>- Add image generation with DALL-E 2 model
-- Update readme file with DALL-E 2 example </PackageReleaseNotes>
+    <PackageTags>OpenAI, ChatGPT, CSharp, .NET, AI, ArtificialIntelligence, TextGeneration, NLP, LanguageModel, GPT, GPT-3, .NET6, MachineLearning, TextEditing, CodeGeneration, Chatbot, API, ClientLibrary, DALL-E, ImageGeneration</PackageTags>
+    <PackageReleaseNotes>- Add image edition with DALL-E 2 model
+- Make all methods asynchronous to improve performance and responsiveness </PackageReleaseNotes>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <AssemblyVersion>1.6.0</AssemblyVersion>
-    <FileVersion>1.6.0</FileVersion>
+    <AssemblyVersion>1.7.0</AssemblyVersion>
+    <FileVersion>1.7.0</FileVersion>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>1.6.0</Version>
+    <Version>1.7.0</Version>
   </PropertyGroup>
 
   <ItemGroup>

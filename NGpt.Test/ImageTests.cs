@@ -1,37 +1,49 @@
 ﻿using NGpt.Domain.Image;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace NGpt.Test
+namespace NGpt.Test;
+
+public class ImageTests
 {
-    public class ImageTests
+    Image _image;
+
+    public ImageTests()
     {
-        Image _image;
+        _image = new Image("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", "org-UpMJfYAwK3diGzF1OVSVLb1e");
+    }
 
-        public ImageTests()
+    [Fact]
+    public async void ShouldGenerateImage()
+    {
+        var imageRequest = new ImageRequest("Little Labrador dog")
         {
-            _image = new Image("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", "org-UpMJfYAwK3diGzF1OVSVLb1e");
-        }
+            NumberOfImages = 1,
+            ResponseFormat = ResponseFormatType.Url,
+            Size = ImageSize.Size512x512,
+            User = "Dariusz Kacban"
+        };
 
-        [Fact]
-        public void ShouldCreateUrl()
+        var response = await _image.GenerateAsync(imageRequest);
+
+        var url = response.Data.First().Url;
+
+        Assert.True(url.Length > 0);
+    }
+
+    [Fact]
+    public async void ShouldEditImage()
+    {
+        var imageRequest = new ImageEditRequest("image.png", "Add light blue background")
         {
-            var imageRequest = new ImageRequest("Little Labrador dog")
-            {
-                NumberOfImages = 1,
-                ResponseFormat = ResponseFormatType.Url,
-                Size = ImageSize.Size512x512,
-                User = "Dariusz Kacban"
-            };
+            NumberOfImages = 1,
+            ResponseFormat = ResponseFormatType.Url,
+            Size = ImageSize.Size512x512,
+            User = "Dariusz Kacban"
+        };
 
-            var response = _image.Generate(imageRequest);
+        var response = await _image.EditAsync(imageRequest);
 
-            var url = response.Data.First().Url;
+        var url = response.Data.First().Url;
 
-            Assert.True(url.Length > 0);
-        }
+        Assert.True(url.Length > 0);
     }
 }

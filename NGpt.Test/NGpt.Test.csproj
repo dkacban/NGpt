@@ -29,4 +29,16 @@
     <ProjectReference Include="..\NGpt\NGpt.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="dog.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="image.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="trans.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

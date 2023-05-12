@@ -12,14 +12,14 @@ namespace NGpt
             _service = new ChatService(apiKey, organization);
         }
 
-        public ChatResponse Complete(ChatRequest request)
+        public async Task<ChatResponse> CompleteAsync(ChatRequest request)
         {
-            var response = _service.Complete(request);
+            var response = await _service.Complete(request);
 
             return response;
         }
 
-        public string Complete(string request)
+        public async Task<string> CompleteAsync(string request)
         {
 
             var completionRequest = new ChatRequest()
@@ -37,7 +37,7 @@ namespace NGpt
                 N = 1
             };
 
-            var response = Complete(completionRequest);
+            var response = await CompleteAsync(completionRequest);
             var content = response.Choices[0].Message.Content;
 
             return content;

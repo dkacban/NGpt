@@ -12,7 +12,7 @@ namespace NGpt.Services.Edit
         {
         }
 
-        public EditResponse Edit(EditRequest request)
+        public async Task<EditResponse> Edit(EditRequest request)
         {
             var requestDto = new EditRequestDto()
             {
@@ -24,7 +24,7 @@ namespace NGpt.Services.Edit
                 TopP = request.TopP
             };
 
-            var responseDto = CallApi<EditResponseDto>(requestDto);
+            var responseDto = await CallApi<EditResponseDto>(requestDto);
 
             var response = new EditResponse(
                 Created : responseDto.Created,

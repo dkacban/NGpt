@@ -1,4 +1,7 @@
-﻿using NGpt.Domain.Image;
+﻿using Flurl.Http;
+using Newtonsoft.Json;
+using NGpt.Domain.Image;
+using Polly.Retry;
 
 namespace NGpt.Services.Image
 {
@@ -10,7 +13,7 @@ namespace NGpt.Services.Image
         {
         }
 
-        public ImageResponse Generate(ImageRequest request)
+        public async Task<ImageResponse> Generate(ImageRequest request)
         {
             var requestDto = new ImageRequestDto(request.Prompt)
             {
@@ -20,7 +23,7 @@ namespace NGpt.Services.Image
                 User = request.User
             };
 
-            var responseDto = CallApi<ImageResponseDto>(requestDto);
+            var responseDto = await CallApi<ImageResponseDto>(requestDto);
 
             var imageResponse = new ImageResponse
             {

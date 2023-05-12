@@ -1,7 +1,4 @@
 using NGpt.ChatCompletion;
-using System.ComponentModel;
-using System.Reflection;
-using Xunit.Sdk;
 
 namespace NGpt.Test;
 
@@ -15,7 +12,7 @@ public class ChatCompletionTests
     }
 
     [Fact]
-    public void ShouldComplete()
+    public async Task ShouldComplete()
     {
         var completionRequest = new ChatRequest()
         {
@@ -31,14 +28,14 @@ public class ChatCompletionTests
             Model = ChatModel.GPT3_5Turbo
         };
 
-        var response = _chat.Complete(completionRequest);
+        var response = await _chat.CompleteAsync(completionRequest);
         var content = response.Choices[0].Message.Content;
 
         Assert.Equal("This is a test!", content);
     }
 
     [Fact]
-    public void ShouldAnswerAskedAboutName()
+    public async void ShouldAnswerAskedAboutName()
     {
         var completionRequest = new ChatRequest()
         {
@@ -54,14 +51,14 @@ public class ChatCompletionTests
             Model = ChatModel.GPT3_5Turbo
         };
 
-        var response = _chat.Complete(completionRequest);
+        var response = await _chat.CompleteAsync(completionRequest);
         var content = response.Choices[0].Message.Content;
 
         Assert.True(content.Length > 0);
     }
 
     [Fact]
-    public void ShouldCompleteFor3ChatMessages()
+    public async void ShouldCompleteFor3ChatMessages()
     {
         var completionRequest = new ChatRequest()
         {
@@ -78,7 +75,7 @@ public class ChatCompletionTests
             N = 3
         };
 
-        var response = _chat.Complete(completionRequest);
+        var response = await _chat.CompleteAsync(completionRequest);
 
         Assert.Equal(3, response.Choices.Count);
         foreach (var choice in response.Choices)
@@ -89,7 +86,7 @@ public class ChatCompletionTests
     }
 
     [Fact]
-    public void ShouldCompleteFor2ChatMessages_whenNIs2()
+    public async void ShouldCompleteFor2ChatMessages_whenNIs2()
     {
         var completionRequest = new ChatRequest()
         {
@@ -106,7 +103,7 @@ public class ChatCompletionTests
             N = 2
         };
 
-        var response = _chat.Complete(completionRequest);
+        var response = await _chat.CompleteAsync(completionRequest);
 
         Assert.Equal(2, response.Choices.Count);
         foreach (var choice in response.Choices)
@@ -117,9 +114,9 @@ public class ChatCompletionTests
     }
 
     [Fact]
-    public void ShouldCompleteForSimpleText()
+    public async void ShouldCompleteForSimpleText()
     {
-        var response = _chat.Complete("Say hello");
+        var response = await _chat.CompleteAsync("Say hello");
 
         Assert.True(response.Contains("Hello"));
     }

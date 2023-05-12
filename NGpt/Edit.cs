@@ -12,14 +12,14 @@ namespace NGpt
             _service = new EditService(apiKey, organization);
         }
 
-        public EditResponse EditContent(EditRequest request)
+        public async Task<EditResponse> EditContentAsync(EditRequest request)
         {
-            var response = _service.Edit(request);
+            var response = await _service.Edit(request);
 
             return response;
         }
 
-        public string EditText(string text, string instruction)
+        public async Task<string> EditTextAsync(string text, string instruction)
         {
             var request = new EditRequest(EditModel.TextDavinciEdit001, instruction)
             {
@@ -29,13 +29,13 @@ namespace NGpt
                 TopP = 1
             };
 
-            var response = EditContent(request);
+            var response = await EditContentAsync(request);
             var content = response.Choices[0].Text;
 
             return content;
         }
 
-        public string EditCode(string code, string instruction)
+        public async Task<string> EditCodeAsync(string code, string instruction)
         {
             var request = new EditRequest(EditModel.CodeDavinciEdit001, instruction)
             {
@@ -45,7 +45,7 @@ namespace NGpt
                 TopP = 1
             };
 
-            var response = EditContent(request);
+            var response = await EditContentAsync(request);
             var content = response.Choices[0].Text;
 
             return content;
