@@ -7,17 +7,17 @@
     <Title>NGPT - OpenAI ChatGPT library for C#</Title>
     <Authors>dkacban</Authors>
     <Description>Add ChatGPT language model to your applications in seconds! Send request to ChatGPT easily. Just type in your OpenAI apiKey and Organization ID, and you're ready to code.</Description>
-    <Copyright>Copyright (c) PILSOFT 2023.</Copyright>
+    <Copyright>Copyright (c) PILSOFT 2023</Copyright>
     <PackageProjectUrl>pilsoft.pl</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageTags>OpenAI, ChatGPT, CSharp, .NET, AI, ArtificialIntelligence, TextGeneration, NLP, LanguageModel, GPT, GPT-3, .NET6, MachineLearning, TextEditing, CodeGeneration, Chatbot, API, ClientLibrary, DALL-E, ImageGeneration</PackageTags>
     <PackageReleaseNotes>- Add image edition with DALL-E 2 model
 - Make all methods asynchronous to improve performance and responsiveness </PackageReleaseNotes>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <AssemblyVersion>1.7.0</AssemblyVersion>
-    <FileVersion>1.7.0</FileVersion>
+    <AssemblyVersion>1.7.1</AssemblyVersion>
+    <FileVersion>1.7.1</FileVersion>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>1.7.0</Version>
+    <Version>1.7.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -27,7 +27,11 @@
     </None>
   </ItemGroup>
 
-  <ItemGroup>
+	<ItemGroup>
+		<None Include="NGPT.png" Pack="true" PackagePath="" />
+	</ItemGroup>
+
+	<ItemGroup>
     <Folder Include="Services\Audio\Transcription\" />
     <Folder Include="Services\Audio\Translation\" />
   </ItemGroup>
