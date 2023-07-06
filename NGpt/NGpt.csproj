@@ -11,8 +11,9 @@
     <PackageProjectUrl>pilsoft.pl</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageTags>OpenAI, ChatGPT, CSharp, .NET, AI, ArtificialIntelligence, TextGeneration, NLP, LanguageModel, GPT, GPT-3, .NET6, MachineLearning, TextEditing, CodeGeneration, Chatbot, API, ClientLibrary, DALL-E, ImageGeneration</PackageTags>
-    <PackageReleaseNotes>- Add image edition with DALL-E 2 model
-- Make all methods asynchronous to improve performance and responsiveness </PackageReleaseNotes>
+    <PackageReleaseNotes>Use default environment variable settings if not given in the client code:
+- read openai-apikey from environment variable
+- read openai-organization from environment variable</PackageReleaseNotes>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <AssemblyVersion>1.7.1</AssemblyVersion>
     <FileVersion>1.7.1</FileVersion>

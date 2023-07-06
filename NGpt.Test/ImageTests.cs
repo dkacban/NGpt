@@ -8,7 +8,7 @@ public class ImageTests
 
     public ImageTests()
     {
-        _image = new Image("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", "org-UpMJfYAwK3diGzF1OVSVLb1e");
+        _image = new Image();
     }
 
     [Fact]

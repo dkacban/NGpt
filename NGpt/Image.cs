@@ -8,7 +8,7 @@ namespace NGpt
         ImageService _service;
         ImageEditService _imageEditService;
 
-        public Image(string apiKey, string organization = "")
+        public Image(string apiKey = "", string organization = "")
         {
             _service = new ImageService(apiKey, organization);
             _imageEditService = new ImageEditService(apiKey, organization);

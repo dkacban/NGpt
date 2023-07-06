@@ -7,7 +7,7 @@ namespace NGpt
     {
         EditService _service;
 
-        public Edit(string apiKey, string organization = "")
+        public Edit(string apiKey = "", string organization = "")
         {
             _service = new EditService(apiKey, organization);
         }

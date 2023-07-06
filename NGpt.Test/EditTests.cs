@@ -8,7 +8,7 @@ public class EditTests
 
     public EditTests()
     {
-        _edit = new Edit("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", "org-UpMJfYAwK3diGzF1OVSVLb1e");
+        _edit = new Edit();
     }
 
     [Fact]

@@ -14,7 +14,26 @@ namespace NGpt.Services
 
         protected BaseService(string apiKey, string organization)
         {
-            _apiKey = apiKey;
+            if (string.IsNullOrEmpty(apiKey))
+            {
+                var key = Environment.GetEnvironmentVariable("openai-apikey", EnvironmentVariableTarget.Machine);
+                if (string.IsNullOrEmpty(key))
+                {
+                    throw new Exception("openai-apikey environment variable is not set.");
+                }
+
+                _apiKey = key;
+            }
+
+            if (string.IsNullOrEmpty(organization))
+            {
+                var org = Environment.GetEnvironmentVariable("openai-organization", EnvironmentVariableTarget.Machine);
+                if (!string.IsNullOrEmpty(org))
+                {
+                    _organization = org;
+                }
+            }
+
             _organization = organization;
         }
 
@@ -52,7 +71,7 @@ namespace NGpt.Services
                 .Or<AggregateException>(aggregateException =>
                     aggregateException.InnerExceptions.Any(innerException => innerException is FlurlHttpException))
                 .Or<FlurlHttpException>()
-                .WaitAndRetryAsync(6, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)));
+                .WaitAndRetryAsync(1, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)));
         }
 
         protected string EnumToString<T>(T enumValue) where T : Enum

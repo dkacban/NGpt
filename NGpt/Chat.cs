@@ -7,8 +7,9 @@ namespace NGpt
     {
         ChatService _service;
 
-        public Chat(string apiKey, string organization = "")
+        public Chat(string apiKey = "", string organization = "")
         {
+
             _service = new ChatService(apiKey, organization);
         }
 
