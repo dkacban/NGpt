@@ -15,10 +15,11 @@
 - read openai-apikey from environment variable
 - read openai-organization from environment variable</PackageReleaseNotes>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <AssemblyVersion>1.7.1</AssemblyVersion>
-    <FileVersion>1.7.1</FileVersion>
+    <AssemblyVersion>1.7.2</AssemblyVersion>
+    <FileVersion>1.7.2</FileVersion>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>1.7.1</Version>
+    <Version>1.7.2</Version>
+    <PackageIcon>NGPT.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
