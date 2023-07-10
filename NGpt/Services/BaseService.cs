@@ -31,6 +31,8 @@ namespace NGpt.Services
                 if (!string.IsNullOrEmpty(org))
                 {
                     _organization = org;
+
+                    return;
                 }
             }
 
@@ -42,6 +44,7 @@ namespace NGpt.Services
             AsyncRetryPolicy policy = CreateRetryPolicy();
 
             IFlurlResponse response = null;
+
             await policy.ExecuteAsync(async () =>
                 {
                     response = await Url
@@ -71,7 +74,7 @@ namespace NGpt.Services
                 .Or<AggregateException>(aggregateException =>
                     aggregateException.InnerExceptions.Any(innerException => innerException is FlurlHttpException))
                 .Or<FlurlHttpException>()
-                .WaitAndRetryAsync(1, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)));
+                .WaitAndRetryAsync(3, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)));
         }
 
         protected string EnumToString<T>(T enumValue) where T : Enum
