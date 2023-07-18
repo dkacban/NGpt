@@ -11,13 +11,12 @@
     <PackageProjectUrl>pilsoft.pl</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageTags>OpenAI, ChatGPT, CSharp, .NET, AI, ArtificialIntelligence, TextGeneration, NLP, LanguageModel, GPT, GPT-3, .NET6, MachineLearning, TextEditing, CodeGeneration, Chatbot, API, ClientLibrary, DALL-E, ImageGeneration</PackageTags>
-    <PackageReleaseNotes>- Set retry limit to 3 retries by default
-- Improve reading environment variable for organization</PackageReleaseNotes>
+    <PackageReleaseNotes>- Fix apiKey problem</PackageReleaseNotes>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <AssemblyVersion>1.7.3</AssemblyVersion>
-    <FileVersion>1.7.3</FileVersion>
+    <AssemblyVersion>1.7.4</AssemblyVersion>
+    <FileVersion>1.7.4</FileVersion>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>1.7.3</Version>
+    <Version>1.7.4</Version>
     <PackageIcon>NGPT.png</PackageIcon>
   </PropertyGroup>
 
