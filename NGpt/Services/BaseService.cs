@@ -19,24 +19,29 @@ namespace NGpt.Services
                 var key = Environment.GetEnvironmentVariable("openai-apikey", EnvironmentVariableTarget.Machine);
                 if (string.IsNullOrEmpty(key))
                 {
-                    throw new Exception("openai-apikey environment variable is not set.");
+                    throw new Exception("apiKey is not given and openai-apikey environment variable is not set.");
                 }
 
                 _apiKey = key;
+            } 
+            else
+            {
+                _apiKey = apiKey;
             }
 
             if (string.IsNullOrEmpty(organization))
             {
                 var org = Environment.GetEnvironmentVariable("openai-organization", EnvironmentVariableTarget.Machine);
-                if (!string.IsNullOrEmpty(org))
+                if (string.IsNullOrEmpty(org))
                 {
-                    _organization = org;
-
-                    return;
+                    throw new Exception("organization is not given and openai-organization environment variable is not set.");
                 }
+                _organization = org;
             }
-
-            _organization = organization;
+            else
+            {
+                _organization = organization;
+            }
         }
 
         protected async Task<T?> CallApi<T>(object requestDto)
